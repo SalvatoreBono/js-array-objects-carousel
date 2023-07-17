@@ -1,0 +1,36 @@
+.carousel-custom {
+    aspect-ratio: 16/9;
+    width: 900px;
+    position: relative;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-radius: 15px;
+}
+
+.btn-carousel {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    top: 50%;
+    left: -50px;
+    right: -50px;
+}
+
+.text-img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: white;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+}

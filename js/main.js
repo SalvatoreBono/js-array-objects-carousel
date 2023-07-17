@@ -22,6 +22,7 @@ const images = [
     }
 ];
 const carousel = document.querySelector(".carousel-custom");
+let indexImg = 0;
 for (let i = 0; i < images.length; i++) {
     //creazione variabile vuota
     let activeImg = "";
@@ -30,13 +31,11 @@ for (let i = 0; i < images.length; i++) {
         activeImg = "active";
     }
 
-    console.log(`${images[i].image},\n ${images[i].title},\n ${images[i].text}.`)
-
     //creazione carousel tramite innerHTML
-    carousel.innerHTML += `<div "class=${activeImg}">
+    carousel.innerHTML += `<div class="${activeImg} index-img">
     <img src="img/${images[i].image}" alt="" />
     <div class="text-img text-end">
-    <h4 "class=${activeImg}">${images[i].title}</h4>
+    <h4 class="${activeImg}">${images[i].title}</h4>
     ${images[i].text}
     </div>
     </div>`
@@ -46,7 +45,27 @@ for (let i = 0; i < images.length; i++) {
 const next = document.getElementById("right");
 const back = document.getElementById("left");
 
+const allImg = document.querySelectorAll(".index-img");
 next.addEventListener("click", function () {
+    //rimuovo l'active
+    allImg[indexImg].classList.remove("active");
+    //incremento il contatore
+    indexImg++;
+
+    //se il contatore arriva al massimo del numero delle img,  ritorna alla img 0
+    if (indexImg > allImg.length - 1) {
+        indexImg = 0
+    }
+    //Siccome adesso il contatore è aumentato di uno 1 assegno la classe active 
+    allImg[indexImg].classList.add("active");
 })
+
 back.addEventListener("click", function () {
+    allImg[indexImg].classList.remove("active");
+    indexImg--;
+    //Se indexImg è minore di 0, indexImg deve essere uguale alla massimo numero delle img
+    if (indexImg < 0) {
+        indexImg = allImg.length - 1;
+    }
+    allImg[indexImg].classList.add("active");
 })

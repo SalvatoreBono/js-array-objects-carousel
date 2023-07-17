@@ -34,3 +34,11 @@ img {
     border-bottom-right-radius: 15px;
     background-color: rgba(0, 0, 0, 0.7);
 }
+
+.index-img {
+    opacity: 0;
+}
+
+.index-img.active {
+    opacity: 1;
+}
